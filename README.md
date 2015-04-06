@@ -1,11 +1,21 @@
-# munin-plugin-sysctl
+# munin-plugin-vmstat
 
-Various munin plugins for sysctl parameters
+## Installation
 
-To install, git clone this project and create symlink in /etc/munin/plugins to various plugin scripts (like vm_dirty) inside the git root directory. 
+Git clone somewhere.. then create a symlink in /etc/munin/plugins
 
-## vm_dirty
+```
+cd /etc/munin/plugins
+ln -s /home/hayashis/git/munin-plugin-vmstat/vmstat vmstat 
+```
+(adjust the location)
 
-Monitors current dirty memory parameters (sysctl -a | grep dirty).
+## Configuration
 
+Add your configuration in /etc/munin/plugin-conf.d/vmstat and specify parameters that you want to monitor
+
+```
+[dirty]
+env.params "nr_dirty,nr_writeback,nr_writeback_temp"
+```
 

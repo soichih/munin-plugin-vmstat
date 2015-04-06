@@ -1,0 +1,39 @@
+#!/usr/bin/node
+var exec = require('child_process').exec;
+
+//list of parameters to monitor
+var params = "nr_dirty,nr_writeback";
+if(process.env.params) {
+    params = process.env.params;
+}
+params = params.split(",");
+
+mode=process.argv[2];
+switch(mode) {
+    case "config": 
+        config(); 
+        break;
+    default: print();
+}
+
+function config() {
+    console.log("graph_title vmstat");
+    params.forEach(function(attr) {
+        console.log(attr+".label "+attr); //TODO should do something a bit more friendly..
+    });
+}
+
+function print() {
+    exec("cat /proc/vmstat", function(error, stdout, stderr) { 
+        var lines = stdout.split("\n");
+        var attrs = {};
+        lines.forEach(function(line) {
+            var tokens = line.split(" ");
+            attrs[tokens[0]] = tokens[1];
+        });
+        params.forEach(function(attr) {
+            console.log(attr+".value "+attrs[attr]);
+        });
+    });
+}
+
