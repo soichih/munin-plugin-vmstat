@@ -10,6 +10,12 @@ ln -s /home/hayashis/git/munin-plugin-vmstat/vmstat vmstat
 ```
 (adjust the location)
 
+You then need to reload your munin-node
+
+```
+sudo /etc/init.d/munin-node reload
+```
+
 ## Configuration
 
 Add your configuration in /etc/munin/plugin-conf.d/vmstat and specify parameters that you want to monitor
