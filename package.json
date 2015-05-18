@@ -1,0 +1,18 @@
+{
+  "name": "munin-plugin-vmstat",
+  "version": "0.0.0",
+  "description": "## Installation",
+  "main": "vmstat",
+  "scripts": {
+    "test": "mocha"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/soichih/munin-plugin-vmstat"
+  },
+  "author": "",
+  "license": "BSD",
+  "bugs": {
+    "url": "https://github.com/soichih/munin-plugin-vmstat/issues"
+  }
+}
